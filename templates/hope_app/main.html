@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Developer</title>
 </head>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <style>
     td {
         text-align: center;
@@ -13,8 +16,9 @@
         text-align: center;
     }
 </style>
+
 <body>
-    <table id = result class="table" style="margin: auto">
+    <table id = "result" class="table" style="margin: auto">
         <thead>
             <tr>
                 <th scope="col">№</th>
@@ -32,19 +36,23 @@
           $.ajax({
               url: "{% url 'data' %}",
               success: function (response) {
-                  for (let key in response.result) {
+                  for (let val in response.response) {
                       $("#result").append(
+
                           "<tr>" +
-                            "<th scope=\"row\">" + response.result[key].id + "</th>" +
-                            "<td>" + response.result[key].order_num + "</td>" +
-                            "<td>" + response.result[key].price_RUB + "</td>" +
-                            "<td>" + response.result[key].delivery_date + "</td>" +
+                            "<th scope=\"row\">" + response.response[val].id + "</th>" +
+                            "<td>" + response.response[val].order_num + "</td>" +
+                            "<td>" + response.response[val].price_RUB + "</td>" +
+                            "<td>" + response.response[val].delivery_date + "</td>" +
                           "</tr>"
+
                       )
                   }
               }
           })
       })
   </script>
+
 </body>
+
 </html>
